@@ -10,12 +10,33 @@ const cody = {
 
 // PetList only renders one SinglePet. We'd like it to render a list of pets,
 // passed in as props.pets. Don't forget to add a unique key to each one!
-function PetList() {
+function PetList(props) {
+  const [view, setView] = React.useState("all")
+
+  const viewHandler = (event) => {
+    setView(event.target.value)
+  }
 
   return (
     <>
+      <div>
+        <span>Filter by species </span>
+        <select id="dropdown" value={view} onChange={viewHandler}>
+          <option value="all">all</option>
+          <option value="cat">cats</option>
+          <option value="dog">dogs</option>
+        </select>
+      </div>
       <div className="pet-list">
-            <SinglePet  pet={cody}  />
+            {props.pets.filter((petObj)=>{
+              if (view === "all") {
+                return true
+              } else {
+                return petObj.species === view
+              }
+            }).map((petObj) =>
+              <SinglePet key={petObj.id} pet={petObj}/>
+              )}
       </div>
     </>
   )
