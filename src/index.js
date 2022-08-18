@@ -8,11 +8,18 @@ import 'core-js/stable';
 import 'regenerator-runtime/runtime';
 
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client';
 import Root from './components/Root';
 
 const App = () => {
   return <Root />;
 };
 
-ReactDOM.render(<App />, document.getElementById('app'));
+const app = ReactDOM.createRoot(document.getElementById('app'))
+app.render(
+  <>
+    <App />
+  </>
+)
+
+// ReactDOM.render(<App />, document.getElementById('app'));
