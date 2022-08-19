@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
 import SinglePet from './SinglePet';
 
@@ -35,7 +36,7 @@ function PetList(props) {
                 return petObj.species === view
               }
             }).map((petObj) =>
-              <SinglePet key={petObj.id} pet={petObj}/>
+              <SinglePet key={petObj.id} pet={petObj} handleDelete={props.handleDelete}/>
               )}
       </div>
     </>

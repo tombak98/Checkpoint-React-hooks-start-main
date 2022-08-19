@@ -1,4 +1,5 @@
 import React from 'react';
+import DeletePet from './DeletePet';
 
 function SinglePet(props) {
 const [adopted, setAdopted] = React.useState(false)
@@ -9,6 +10,7 @@ const [adopted, setAdopted] = React.useState(false)
       <p>Species: {props.pet.species}</p>
       <p>Status: {adopted ? "Adopted!":"Available!"}</p>
       <button onClick={()=>setAdopted(!adopted)}>Toggle Status</button>
+      <DeletePet petId={props.pet.id} handleDelete={props.handleDelete}/>
     </div>
   );
 }
